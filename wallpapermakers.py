@@ -1,5 +1,6 @@
 from PIL import Image
 
+from builders import build_copy
 from builders import build_2gyration
 from builders import build_4gyration
 from builders import build_6reflection
@@ -17,7 +18,7 @@ star_442 = lambda im: reflection_combiner(build_diagonal_2reflection(im))
 blue_442 = lambda im: translation_combiner(build_4gyration(im, quarter='r'))
 star_2222 = lambda im: reflection_combiner(build_vertical_2reflection(im, half='r'))
 blue_2222 = lambda im: translation_combiner(build_2gyration(im))
-wandering = lambda im: translation_combiner(im)
+wandering = lambda im: translation_combiner(build_copy(im))
 star_cross = lambda im: translation_combiner(build_diagonal_2reflection(im))
 star_star = lambda im: translation_combiner(build_vertical_2reflection(im, half='l'))
 blue4_star2 = lambda im: reflection_combiner(build_4gyration(im, quarter='l'))
