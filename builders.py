@@ -9,6 +9,11 @@ from utils import rotation_translation
 from utils import transform_diagonal
 from utils import three_cut
 
+def build_copy(image, square_size=100):
+    copy = Image.new('RGB', (square_size, square_size))
+    sized = image.resize((square_size, square_size))
+    copy.paste(sized, (0, 0))
+    return copy
 
 def build_2gyration(image, square_size=100, half='l'):
     gyration = Image.new('RGB', (square_size, square_size))
