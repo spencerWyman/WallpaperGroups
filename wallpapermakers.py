@@ -43,6 +43,22 @@ wallpapermakers = {
     'star_632': star_632,
     }
 
+group_names = (
+    'star_442',
+    'blue_442',
+    'star_2222',
+    'blue_2222',
+    'wandering',
+    'star_cross',
+    'star_star',
+    'blue4_star2',
+    'cross_cross',
+    'blue22_star',
+    'blue22_cross',
+    'blue2_star22',
+    'star_632',
+    )
+
 
 def wallpapermaker(group, image):
     return wallpapermakers[group](image)
