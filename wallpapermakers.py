@@ -27,7 +27,7 @@ def star_2222(im, dim=(4, 4)):
 
 
 def blue_2222(im, dim=(4, 4)):
-    return translation_combiner(build_2gyration(im, dim))
+    return translation_combiner(build_2gyration(im), dim)
 
 
 def wandering(im, dim=(4, 4)):
