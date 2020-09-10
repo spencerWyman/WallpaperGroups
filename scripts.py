@@ -4,6 +4,7 @@ from pathlib import Path
 from PIL import Image
 from wallpapermakers import wallpapermaker
 from wallpapermakers import group_names
+from random import randint
 
 command = argv[1]
 
@@ -46,7 +47,9 @@ elif command == 'make_training_set':
     for im in images:
 
         for group in group_names:
+            random_size = randint(4, 10)
+            random_dimension = (random_size, random_size)
             im_name = path.basename(im.filename)
             tiling_path = source_path.parent / group / (group + im_name)
-            tiling = wallpapermaker(group, im)
+            tiling = wallpapermaker(group, im, random_dimension)
             tiling.save(tiling_path)
