@@ -14,19 +14,56 @@ from combiners import star_combiner
 from combiners import reflection_diagonal_combiner
 
 
-star_442 = lambda im: reflection_combiner(build_diagonal_2reflection(im))
-blue_442 = lambda im: translation_combiner(build_4gyration(im, quarter='r'))
-star_2222 = lambda im: reflection_combiner(build_vertical_2reflection(im, half='r'))
-blue_2222 = lambda im: translation_combiner(build_2gyration(im))
-wandering = lambda im: translation_combiner(build_copy(im))
-star_cross = lambda im: translation_combiner(build_diagonal_2reflection(im))
-star_star = lambda im: translation_combiner(build_vertical_2reflection(im, half='l'))
-blue4_star2 = lambda im: reflection_combiner(build_4gyration(im, quarter='l'))
-cross_cross = lambda im: star_combiner(im.resize((100, 100)))
-blue22_star = lambda im: star_combiner(build_2gyration(im))
-blue22_cross = lambda im: reflection_diagonal_combiner(build_diagonal_2gyration(im))
-blue2_star22 = lambda im: reflection_combiner(build_2gyration(im))
-star_632 = lambda im: reflection_combiner(build_6reflection(im))
+def star_442(im, dim=(4, 4)):
+    return reflection_combiner(build_diagonal_2reflection(im), dim)
+
+
+def blue_442(im, dim=(4, 4)):
+    return translation_combiner(build_4gyration(im, quarter='r'), dim)
+
+
+def star_2222(im, dim=(4, 4)):
+    return reflection_combiner(build_vertical_2reflection(im, half='r'), dim)
+
+
+def blue_2222(im, dim=(4, 4)):
+    return translation_combiner(build_2gyration(im, dim))
+
+
+def wandering(im, dim=(4, 4)):
+    return translation_combiner(build_copy(im), dim)
+
+
+def star_cross(im, dim=(4, 4)):
+    return translation_combiner(build_diagonal_2reflection(im), dim)
+
+
+def star_star(im, dim=(4, 4)):
+    return translation_combiner(build_vertical_2reflection(im, half='l'), dim)
+
+
+def blue4_star2(im, dim=(4, 4)):
+    return reflection_combiner(build_4gyration(im, quarter='l'), dim)
+
+
+def cross_cross(im, dim=(4, 4)):
+    return star_combiner(im.resize((100, 100)), dim)
+
+
+def blue22_star(im, dim=(4, 4)):
+    return star_combiner(build_2gyration(im), dim)
+
+
+def blue22_cross(im, dim=(4, 4)):
+    return reflection_diagonal_combiner(build_diagonal_2gyration(im), dim)
+
+
+def blue2_star22(im, dim=(4, 4)):
+    return reflection_combiner(build_2gyration(im), dim)
+
+
+def star_632(im, dim=(4, 4)):
+    return reflection_combiner(build_6reflection(im), dim)
 
 wallpapermakers = {
     'star_442': star_442,
@@ -61,5 +98,5 @@ group_names = (
     )
 
 
-def wallpapermaker(group, image):
-    return wallpapermakers[group](image)
+def wallpapermaker(group, image, dim=(4, 4)):
+    return wallpapermakers[group](image, dim)
