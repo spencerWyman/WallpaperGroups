@@ -16,22 +16,15 @@ if command == 'show':
     wallpapermaker(group_name, im).show()
 
 elif command == 'saveall':
-    tilings = [
-        ('star_442', wallpapermaker('star_442', im)),
-        ('blue_442', wallpapermaker('blue_442', im)),
-        ('star_2222', wallpapermaker('star_2222', im)),
-        ('blue_2222', wallpapermaker('blue_2222', im)),
-        ('wandering', wallpapermaker('wandering', im)),
-        ('star_cross', wallpapermaker('star_cross', im)),
-        ('star_star', wallpapermaker('star_star', im)),
-        ('blue4_star2', wallpapermaker('blue4_star2', im)),
-        ('cross_cross', wallpapermaker('cross_cross', im)),
-        ('blue22_star', wallpapermaker('blue22_star', im)),
-        ('blue22_cross', wallpapermaker('blue22_cross', im)),
-        ('blue2_star22', wallpapermaker('blue2_star22', im)),
-    ]
-    for [tilename, image] in tilings:
-        image.save('images/tilename')
+    source_path = Path(argv[2])
+    im = Image.open(source_path)
+    save_path = source_path.parent / 'images'
+    if not save_path.is_dir():
+        save_path.mkdir()
+    for tilename in group_names:
+        print(tilename)
+        image = wallpapermaker(tilename, im)
+        image.save(f'images/{tilename}.png')
 
 elif command == 'make_training_set':
     source_path = Path(argv[2])
